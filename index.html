@@ -4,7 +4,7 @@
     <title>Example</title>
     <style>
         body {
-            background-color: #1c1e21;
+            background-color: #39383F;
             color: white;
             font-family: Arial, sans-serif;
         }
@@ -13,83 +13,96 @@
             background-color: #2c2f33;
             border: none;
             color: white;
-            padding: 5px 10px;
+            padding: 5px 10px; 
         }
 
         button {
-            background-color: #7289da;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
+            background-color:#7289da; 
+            border:none; 
+            color:white; 
+            padding :10px 20px; 
+            cursor:pointer; 
+         }
 
-        button:hover {
-            background-color: #5b6eae;
-        }
+         button:hover { 
+           background-color:#5b6eae; 
+         }
 
-        #linksBox {
-            border: 1px solid #99aab5;
-            padding: 10px;
-            max-height: 200px;
-            overflow-y: auto; 
-        }
-        
+         #linksBox { 
+           border :1px solid #99aab5; 
+           padding :10px; max-height :200px; overflow-y:auto; } 
+
+         /* Add this CSS code */
+         #bottom-left { position :fixed; bottom :0;left :0;} 
+
+         #bottom-right { position :fixed; bottom :0; right :0;} 
+
+         #bottom-text { position :fixed ; bottom :0 ; left :50% ; transform :
+translateX(-50%) ; color:white ; font-size :50px ; font-family :'Franklin Gothic Medium', 'Arial Narrow', Arial,
+sans-serif;}
+
         /* Add this CSS code */
-        #bottom-left {
-          position: fixed; 
-          bottom :0; 
-          left :0; 
-         }
-         #bottom-right { 
-           position :fixed; 
-           bottom :0; 
-           right :0; 
-         }
+        #bottom-left,
+        #bottom-right {
+          height: 50px;
+        }
     </style>
 </head>
 <body>
-    <label for="firstPart">First Part:</label><br>
-    <input type="text" id="firstPart"><br><br>
+    <label for="firstPart">First Part of the link:</label><br> <input type="text" id="firstPart"><br><br>
 
-    <label for="secondPart">Second Part:</label><br>
-    <input type="text" id="secondPart"><br><br>
+    <label for="secondPart">Second Part of the link:</label><br> <input type="text" id="secondPart"><br><br>
 
-    <label for="roundCount">Rounds:</label><br>
-    <input type="number" id="roundCount"><br><br>
+    <label for="roundCount">Number of Rounds:</label><br> <input type="number" id="roundCount"><br><br>
 
-    <button onclick="generateLinks()">Generate Links</button> 
-    <button onclick="copyLinks()" id = "copyButton" style = "display:none;">Copy Links</button> 
+    <button onclick = "generateLinks()">Generate Links</button> 
+
+<button onclick = "copyLinks()" id = "copyButton" style = "display:none;">Copy Links</button> 
 
 <br><br>
 
 <div id = "linksBox">
-<ul id = "links"></ul> 
-</div>
+<ul id = "links"></ul> </div>
 
-<!-- Add these img elements -->
-<img id = "bottom-left" src = "https://imgur.com/3I2pvlp">
-<img id = "bottom-right" src = "https://imgur.com/3I2pvlp">
+<!-- Add these img elements  -->
+<!-- <img id = "bottom-left" src = "https://media.tenor.com/F8O0aa8qG80AAAAd/salami-rubbing-meat.gif"> -->
+<img id = "bottom-right" src = "https://media.tenor.com/F8O0aa8qG80AAAAd/salami-rubbing-meat.gif"> 
 
-<script> 
-function generateLinks() { 
-let firstPart = document.getElementById("firstPart").value; 
-let secondPart = document.getElementById("secondPart").value; 
-let roundCount = document.getElementById("roundCount").value; 
+<!-- Add this div element -->
+<!--<div id ="bottom-text">FMS НЕ Е СЪПОРТ</div>-->
 
-let linksList = document.getElementById("links"); 
-linksList.innerHTML = ""; 
+<script> function generateLinks() { let firstPart =
+document.getElementById("firstPart").value;
 
-for (let i = 0; i<parseInt(roundCount); i++) { 
-let link = firstPart + i + secondPart; let listItem =
-document.createElement("li"); listItem.textContent=link;
+let secondPart =
+document.getElementById("secondPart").value;
 
-linksList.appendChild(listItem); } 
+let roundCount =
+document.getElementById("roundCount").value;
 
-document.getElementById("copyButton").style.display ="inline"; } 
+let linksList =
+document.getElementById("links");
 
-function copyLinks() { let linksList =
-document.querySelectorAll("#links li"); let linksText =
-Array.from(linksList).map(link => link.textContent).join("\n");
+linksList.innerHTML = "";
 
-navigator.clipboard.writeText(linksText); } </script> </body> </html>
+for (let i=0;i<parseInt(roundCount);i++) {
+
+let link=firstPart+i+secondPart;
+
+let listItem=document.createElement("li");
+
+listItem.textContent=link;
+
+linksList.appendChild(listItem);}
+
+document.getElementById("copyButton").style.display ="inline";}
+
+function copyLinks() {
+
+let linksList=document.querySelectorAll("#links li");
+
+let linksText=Array.from(linksList).map(link=>link.textContent).join("\n");
+
+navigator.clipboard.writeText(linksText);}
+
+</script></body></html>
