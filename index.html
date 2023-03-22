@@ -32,10 +32,10 @@
            border :1px solid #99aab5; 
            padding :10px; max-height :200px; overflow-y:auto; } 
 
-           #bottom-right { position :fixed; bottom :0; left :0;opacity: 0;} 
+           #bottom-left { position :fixed; bottom :0; left :0;opacity: 0;} 
         
-        #bottom-right {
-          height: 70px;
+        #bottom-left {
+          height: 100px;
         }
         
         #buttons {
@@ -66,7 +66,7 @@
 <ul id = "links"></ul> </div>
 
 
-<img id = "bottom-right" src = "https://media.tenor.com/F8O0aa8qG80AAAAd/salami-rubbing-meat.gif"> 
+<img id = "bottom-left" src = "https://media.tenor.com/F8O0aa8qG80AAAAd/salami-rubbing-meat.gif"> 
 
 
 <script>
@@ -90,8 +90,8 @@ function generateLinks() {
       
       } else {
       // handle invalid input
-      alert('греда');
-      document.getElementById("bottom-right").style.opacity = "1";
+   
+      document.getElementById("bottom-left").style.opacity = "1";
      }
 }
 
