@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Example</title>
+    <title>Fms ne e support</title>
     <style>
         body {
             background-color: #39383F;
@@ -19,7 +19,7 @@
         button {
             background-color:#7289da; 
             border:none; 
-            color:white; 
+            color:white;
             padding :10px 20px; 
             cursor:pointer; 
          }
@@ -32,77 +32,73 @@
            border :1px solid #99aab5; 
            padding :10px; max-height :200px; overflow-y:auto; } 
 
-         /* Add this CSS code */
-         #bottom-left { position :fixed; bottom :0;left :0;} 
-
-         #bottom-right { position :fixed; bottom :0; right :0;} 
-
-         #bottom-text { position :fixed ; bottom :0 ; left :50% ; transform :
-translateX(-50%) ; color:white ; font-size :50px ; font-family :'Franklin Gothic Medium', 'Arial Narrow', Arial,
-sans-serif;}
-
-        /* Add this CSS code */
-        #bottom-left,
+           #bottom-right { position :fixed; bottom :0; right :0;} 
+        
         #bottom-right {
           height: 50px;
+        }
+        
+        #buttons {
+          display:flex;
+        }
+        #buttons button {
+          margin:0 5px;
         }
     </style>
 </head>
 <body>
-    <label for="firstPart">First Part of the link:</label><br> <input type="text" id="firstPart"><br><br>
-
-    <label for="secondPart">Second Part of the link:</label><br> <input type="text" id="secondPart"><br><br>
+    <label for="textInput"> Soccerway link:</label><br> <input type="text" id="textInput"><br><br>
 
     <label for="roundCount">Number of Rounds:</label><br> <input type="number" id="roundCount"><br><br>
 
-    <button onclick = "generateLinks()">Generate Links</button> 
+   <div id = "buttons">
+      <button onclick = "generateLinks()">Generate Links</button> 
 
-<button onclick = "copyLinks()" id = "copyButton" style = "display:none;">Copy Links</button> 
+      <button onclick = "copyLinks()" id = "copyButton" style = "display:none;">Copy Links</button> 
+
+      <button id = "refreshButton" onclick = "location.reload()" style = "background-color:#7289da;border:none;color:white;padding:10px 20px;cursor:pointer;display:none;">Clear</button>
+
+   </div>
 
 <br><br>
 
 <div id = "linksBox">
 <ul id = "links"></ul> </div>
 
-<!-- Add these img elements  -->
-<!-- <img id = "bottom-left" src = "https://media.tenor.com/F8O0aa8qG80AAAAd/salami-rubbing-meat.gif"> -->
+
 <img id = "bottom-right" src = "https://media.tenor.com/F8O0aa8qG80AAAAd/salami-rubbing-meat.gif"> 
 
-<!-- Add this div element -->
-<!--<div id ="bottom-text">FMS НЕ Е СЪПОРТ</div>-->
 
-<script> function generateLinks() { let firstPart =
-document.getElementById("firstPart").value;
+<script>
+function generateLinks() {
+    var textInput = document.getElementById("textInput").value;
+    var roundCount = document.getElementById("roundCount").value;
+    var regex = /page%22%3A[0-9]+%7D/;
+    
+    if (regex.test(textInput)) {
+      for (var i = 0; i <= roundCount - 1; i++) {
+          var link = textInput.replace(regex, "page%22%3A" + i + "%7D");
+          // add link to page
+          var node = document.createElement("LI");
+          var textnode = document.createTextNode(link);
+          node.appendChild(textnode);
+          document.getElementById("links").appendChild(node);
+      }
+      document.getElementById("copyButton").style.display ="block";
+      document.getElementById("refreshButton").style.display = "inline-block";
 
-let secondPart =
-document.getElementById("secondPart").value;
-
-let roundCount =
-document.getElementById("roundCount").value;
-
-let linksList =
-document.getElementById("links");
-
-linksList.innerHTML = "";
-
-for (let i=0;i<parseInt(roundCount);i++) {
-
-let link=firstPart+i+secondPart;
-
-let listItem=document.createElement("li");
-
-listItem.textContent=link;
-
-linksList.appendChild(listItem);}
-
-document.getElementById("copyButton").style.display ="inline";}
+      
+      } else {
+      // handle invalid input
+      alert('греда');
+     }
+}
 
 function copyLinks() {
+   let linksList= Array.from(document.querySelectorAll('#links li')).map(el => el.textContent).join('\n');
+   navigator.clipboard.writeText(linksList);
+}
+</script>
 
-let linksList=document.querySelectorAll("#links li");
-
-let linksText=Array.from(linksList).map(link=>link.textContent).join("\n");
-
-navigator.clipboard.writeText(linksText);}
-
-</script></body></html>
+</body>
+</html>
