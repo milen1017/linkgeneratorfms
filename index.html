@@ -32,10 +32,10 @@
            border :1px solid #99aab5; 
            padding :10px; max-height :200px; overflow-y:auto; } 
 
-           #bottom-right { position :fixed; bottom :0; right :0;} 
+           #bottom-right { position :fixed; bottom :0; left :0;opacity: 0;} 
         
         #bottom-right {
-          height: 50px;
+          height: 70px;
         }
         
         #buttons {
@@ -91,6 +91,7 @@ function generateLinks() {
       } else {
       // handle invalid input
       alert('греда');
+      document.getElementById("bottom-right").style.opacity = "1";
      }
 }
 
