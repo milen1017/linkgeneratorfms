@@ -8,7 +8,8 @@ body {
 header {
 	background-color: #008660;
 	padding: 15px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	letter-spacing: 1px
 }
 
 h1 span{
